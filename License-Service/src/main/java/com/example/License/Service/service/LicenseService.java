@@ -46,5 +46,5 @@ public class LicenseService {
                 "Delete license with id %s for the organization %s", licenseId, organizationId);
         return responseMessage;
     }
-    
+
 }
