@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: License-Service
+
+management:
+  endpoints:
+    web:
+      base-path: /
+    enabled-by-default: false
+    health:
+      enabled: true
+      show-details: always
+      db:
+        enabled: false
+      disksapce:
+        enabled: true
