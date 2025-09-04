@@ -5,17 +5,16 @@ services:
     ports:
       - "<databasePort>:<databasePort>"
     environment:
-      POSTGRES_USER:
-      POSTGRES_PASSWORD:
-
-      POSTGRES_DB:
+      POSTGRES_USER: <databaseUser>
+      POSTGRES_PASSWORD: <databasePassword>
+      POSTGRES_DB: <databaseName>
   <service-name>:
     image: <database-docker-image-name>
     ports:
       - "<databasePort>:<databasePort>"
     environment:
-      PROFILE:
-      DATABASESERVER_PORT:
+      PROFILE: <profile-name>
+      DATABASESERVER_PORT: "<databasePort>"
     container_name: <container_name>
       networks:
       backend:
