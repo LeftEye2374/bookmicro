@@ -4,7 +4,7 @@ LABEL maintainer="Illary Huaylupo <illaryhs@gmail.com>"
 
 ARG JAR_FILE
 
-COPY ["${JAR_FILE}", "app.jar"]
+COPY ${JAR_FILE} app.jar
 
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf /app.jar)
 
