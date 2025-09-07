@@ -1,13 +1,10 @@
-FROM openjdk:17 as build
-WORKDIR application
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} application.jar
-RUN java -Djarmode=layertools -jar application.jar extract
+FROM openjdk:17 AS builder
+WORKDIR /application
+COPY target/license-service-0.0.1-SNAPSHOT.jar application.jar
+RUN java -Djarmode=tools -jar application.jar list-layers
+RUN java -Djarmode=tools -jar application.jar extract
 
 FROM openjdk:17
-WORKDIR application
-COPY --from=build application/depedencies/ ./
-COPY --from=build application/spring-boot-loader/ ./
-COPY --from=build application/snapshot-dependencies/ ./
-COPY --from=build application/application/ ./
-ENTRYPOINT ["java","org.springframework.boot.loader.JarLauncher"]
+WORKDIR /application
+COPY --from=builder /application ./
+ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
