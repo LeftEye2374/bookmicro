@@ -6,12 +6,12 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.5.4</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>license-service</artifactId>  <!-- ИЗМЕНЕНО -->
+	<artifactId>license-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>license-service</name>  <!-- ИЗМЕНЕНО -->
+	<name>license-service</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -61,6 +61,14 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<layers>
+						<enabled>true</enabled>
+					</layers>
+					<image>
+						<name>ostock/license-service:${project.version}</name>
+					</image>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>com.spotify</groupId>
